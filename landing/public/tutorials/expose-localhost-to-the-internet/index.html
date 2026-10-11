@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How to expose localhost to the internet (with HTTPS) — Sixter tutorial</title>
+<meta name="description" content="Step-by-step guide to expose a localhost server to the internet with a public HTTPS URL using Sixter — great for demos, webhook testing, and sharing a local app." />
+<link rel="canonical" href="https://sixter.in/tutorials/expose-localhost-to-the-internet/" />
+<meta name="robots" content="index, follow, max-image-preview:large" />
+<link rel="icon" type="image/png" href="/sixter.png" />
+<link rel="stylesheet" href="/content.css" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="How to expose localhost to the internet (with HTTPS)" />
+<meta property="og:description" content="Step-by-step: get a public HTTPS URL for your localhost server in under a minute." />
+<meta property="og:url" content="https://sixter.in/tutorials/expose-localhost-to-the-internet/" />
+<meta property="og:image" content="https://sixter.in/sixter-logo.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"HowTo","name":"How to expose localhost to the internet with HTTPS","description":"Get a public HTTPS URL for a localhost server using the Sixter CLI.","step":[{"@type":"HowToStep","name":"Install the CLI","text":"Install the Sixter CLI and run sixter login."},{"@type":"HowToStep","name":"Start your local server","text":"Run your app on a local port, for example http://localhost:3000."},{"@type":"HowToStep","name":"Start the tunnel","text":"Run sixter tunnel -port 3000 to get a public HTTPS URL."},{"@type":"HowToStep","name":"Share the URL","text":"Share https://<name>.sixter.in — it forwards to your localhost."}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://sixter.in/"},{"@type":"ListItem","position":2,"name":"Tutorials","item":"https://sixter.in/tutorials/expose-localhost-to-the-internet/"},{"@type":"ListItem","position":3,"name":"Expose localhost to the internet","item":"https://sixter.in/tutorials/expose-localhost-to-the-internet/"}]}
+</script>
+</head>
+<body>
+<header class="site"><div class="wrap">
+  <a class="brand" href="/"><img src="/sixter.png" alt="Sixter logo" /> Sixter</a>
+  <nav><a href="/docs/">Docs</a><a href="/vs/ngrok/">vs ngrok</a><a href="/glossary/">Glossary</a><a href="/faq/">FAQ</a></nav>
+</div></header>
+
+<div class="wrap">
+  <div class="crumbs"><a href="/">Home</a> / Tutorials / Expose localhost to the internet</div>
+  <main>
+  <h1>How to expose localhost to the internet (with HTTPS)</h1>
+  <p class="lead">You have an app running on <code>http://localhost:3000</code> and need a public URL — to share a demo, test a webhook, or preview on your phone. Here's how to do it with a secure HTTPS tunnel in under a minute.</p>
+
+  <h2>What is a tunnel?</h2>
+  <p>A <a href="/glossary/">tunnel</a> creates an outbound connection from your machine to a public gateway. The gateway gives you a public URL and forwards incoming requests back down that connection to your local port — so you never open a firewall port or need a public IP. Sixter adds automatic HTTPS on top.</p>
+
+  <h2>Step 1 — Install and log in</h2>
+  <pre><code>curl -fsSL https://sixter.in/sixter_amd64.deb -o sixter.deb
+sudo dpkg -i sixter.deb
+sixter login</code></pre>
+  <p>Approve the login from any device. On Windows/macOS, grab the CLI from your dashboard.</p>
+
+  <h2>Step 2 — Run your local server</h2>
+  <p>Start your app as usual, e.g. a dev server on port 3000:</p>
+  <pre><code>npm run dev        # or: python -m http.server 3000, go run ., etc.</code></pre>
+
+  <h2>Step 3 — Start the tunnel</h2>
+  <pre><code>sixter tunnel -port 3000</code></pre>
+  <p>Sixter prints your public URL: <code>https://&lt;name&gt;.sixter.in</code>. It forwards to <code>http://127.0.0.1:3000</code>, with HTTP and WebSocket both supported and HTTPS handled for you.</p>
+
+  <h2>Step 4 — Share it</h2>
+  <p>Send the URL to a colleague, paste it as a webhook endpoint, or open it on your phone. Traffic is inspected by Sixter's edge firewall (WAF, rate limiting) before it reaches your machine.</p>
+
+  <h2>Common uses</h2>
+  <ul>
+    <li><b>Webhook testing</b> — give Stripe, GitHub or Slack a real HTTPS URL that hits your local handler.</li>
+    <li><b>Client demos</b> — share work in progress without deploying.</li>
+    <li><b>Mobile testing</b> — open your local site on a real device.</li>
+    <li><b>Cross‑device debugging</b> — reproduce issues on another network.</li>
+  </ul>
+
+  <h2>Going further</h2>
+  <p>Add a <a href="/docs/#custom-domains">custom domain</a>, <a href="/docs/#deploy">deploy the project</a> so it stays online, or host from a box with no public IP using <a href="/docs/#tunnel-mode">Tunnel Mode</a>.</p>
+
+  <p style="margin-top:30px"><a class="cta" href="/">Get started</a><a class="cta ghost" href="/vs/ngrok/">Sixter vs ngrok</a></p>
+  </main>
+</div>
+
+<footer class="site"><div class="wrap">
+  <div class="row"><a href="/docs/">Documentation</a><a href="/vs/ngrok/">vs ngrok</a><a href="/vs/cloudflare-tunnel/">vs Cloudflare Tunnel</a><a href="/glossary/">Glossary</a><a href="/faq/">FAQ</a></div>
+  © Sixter — secure tunnels &amp; deployment. <a href="https://sixter.in/">sixter.in</a>
+</div></footer>
+</body>
+</html>

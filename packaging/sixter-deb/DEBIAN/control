@@ -1,0 +1,13 @@
+Package: sixter
+Version: 2.0.0
+Section: net
+Priority: optional
+Architecture: amd64
+Maintainer: Sixter <sahith@sixter.in>
+Recommends: nginx, certbot, python3-certbot-nginx, nftables
+Description: Sixter - secure tunnel network, deployment & firewall
+ Sixter exposes localhost to the world, deploys projects to your server,
+ binds custom domains with automatic HTTPS, gives every project a web/SSH
+ terminal, and inspects all traffic with an application firewall.
+ .
+ Commands: sixter login | tunnel | repo | repo-server

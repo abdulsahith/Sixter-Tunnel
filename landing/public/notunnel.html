@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="refresh" content="12">
+<title>Tunnel offline — Sixter</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    min-height: 100vh; display: flex; align-items: center; justify-content: center;
+    background: #07090d; color: #ecf0f6;
+    font-family: -apple-system, 'Segoe UI', Inter, Roboto, sans-serif;
+    background-image: radial-gradient(ellipse 55% 40% at 50% 0%, rgba(246,130,31,0.10), transparent);
+  }
+  .card { text-align: center; padding: 40px; max-width: 480px; }
+  .plug { font-size: 64px; animation: float 3s ease-in-out infinite; }
+  @keyframes float { 50% { transform: translateY(-8px); } }
+  h1 { font-size: 26px; margin: 22px 0 10px; letter-spacing: -0.5px; }
+  p { color: #97a1b3; font-size: 14.5px; line-height: 1.65; }
+  code {
+    display: inline-block; margin-top: 18px; padding: 10px 16px;
+    background: #11151d; border: 1px solid #222937; border-radius: 9px;
+    font-family: Consolas, monospace; font-size: 13px; color: #fbad41;
+  }
+  .foot { margin-top: 30px; font-size: 12px; color: #5f6b80; }
+  .foot b { color: #f6821f; }
+  .pulse {
+    display: inline-block; width: 9px; height: 9px; border-radius: 50%;
+    background: #f5b40b; margin-right: 7px; animation: blink 1.6s infinite;
+  }
+  @keyframes blink { 50% { opacity: 0.25; } }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="plug">🔌</div>
+    <h1>This tunnel is offline</h1>
+    <p>The subdomain exists, but no tunnel is connected right now.
+       If it's yours, start it from your machine:</p>
+    <code>sixter tunnel -port 3000</code>
+    <p class="foot"><span class="pulse"></span>auto-retrying every few seconds · powered by <b>Sixter</b></p>
+  </div>
+</body>
+</html>

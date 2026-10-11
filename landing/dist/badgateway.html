@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="refresh" content="10">
+<title>502 — Sixter</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    min-height: 100vh; display: flex; align-items: center; justify-content: center;
+    background: #07090d; color: #ecf0f6;
+    font-family: -apple-system, 'Segoe UI', Inter, Roboto, sans-serif;
+    background-image: radial-gradient(ellipse 55% 40% at 50% 0%, rgba(255,93,93,0.10), transparent);
+  }
+  .card { text-align: center; padding: 40px; max-width: 500px; }
+  .code502 {
+    font-size: 72px; font-weight: 800; letter-spacing: -3px;
+    background: linear-gradient(120deg, #ff5d5d, #fbad41);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  h1 { font-size: 22px; margin: 10px 0 12px; letter-spacing: -0.4px; }
+  p { color: #97a1b3; font-size: 14.5px; line-height: 1.65; }
+  .steps {
+    text-align: left; margin-top: 22px; padding: 18px 22px;
+    background: #11151d; border: 1px solid #222937; border-radius: 12px;
+    font-size: 13.5px; color: #97a1b3; line-height: 2;
+  }
+  .steps b { color: #ecf0f6; }
+  .foot { margin-top: 28px; font-size: 12px; color: #5f6b80; }
+  .foot b { color: #f6821f; }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="code502">502</div>
+    <h1>The tunnel is up — your app isn't</h1>
+    <p>Traffic reached the tunnel, but nothing answered on the local port.</p>
+    <div class="steps">
+      <b>1.</b> Is your app running? Check the port it listens on.<br>
+      <b>2.</b> Does the port match? <b>sixter tunnel -port &lt;your-port&gt;</b><br>
+      <b>3.</b> Watch the tunnel terminal for errors.
+    </div>
+    <p class="foot">retrying automatically · powered by <b>Sixter</b></p>
+  </div>
+</body>
+</html>

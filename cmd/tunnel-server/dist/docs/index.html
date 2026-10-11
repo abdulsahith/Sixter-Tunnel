@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sixter Documentation — CLI, tunnels, custom domains, deployment &amp; teams</title>
+<meta name="description" content="Official Sixter documentation: install the CLI, log in, expose localhost with sixter tunnel, add custom domains with automatic HTTPS, deploy projects, use Tunnel Mode without a public IP, and manage team coworkspaces." />
+<link rel="canonical" href="https://sixter.in/docs/" />
+<meta name="robots" content="index, follow, max-image-preview:large" />
+<link rel="icon" type="image/png" href="/sixter.png" />
+<link rel="stylesheet" href="/content.css" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Sixter Documentation — tunnels, custom domains, deployment & teams" />
+<meta property="og:description" content="Install the Sixter CLI, expose localhost, add custom domains with automatic HTTPS, deploy projects, and manage team coworkspaces." />
+<meta property="og:url" content="https://sixter.in/docs/" />
+<meta property="og:image" content="https://sixter.in/sixter-logo.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"TechArticle","headline":"Sixter Documentation","description":"Install the Sixter CLI, expose localhost, add custom domains with automatic HTTPS, deploy projects, and manage team coworkspaces.","url":"https://sixter.in/docs/","author":{"@type":"Organization","name":"Sixter"},"publisher":{"@type":"Organization","name":"Sixter","logo":{"@type":"ImageObject","url":"https://sixter.in/sixter-logo.png"}}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://sixter.in/"},{"@type":"ListItem","position":2,"name":"Documentation","item":"https://sixter.in/docs/"}]}
+</script>
+</head>
+<body>
+<header class="site"><div class="wrap">
+  <a class="brand" href="/"><img src="/sixter.png" alt="Sixter logo" /> Sixter</a>
+  <nav><a href="/docs/">Docs</a><a href="/vs/ngrok/">vs ngrok</a><a href="/glossary/">Glossary</a><a href="/faq/">FAQ</a></nav>
+</div></header>
+
+<div class="wrap">
+  <div class="crumbs"><a href="/">Home</a> / Documentation</div>
+  <main>
+  <h1>Sixter Documentation</h1>
+  <p class="lead">Sixter is a secure tunneling and deployment platform. Expose <code>localhost</code> or a private server to the internet with automatic HTTPS, custom domains, one‑click deployment, and team coworkspaces.</p>
+
+  <div class="cards">
+    <div class="card"><h3>Tunnels</h3><p>Forward a public URL to a local port — HTTP &amp; WebSocket.</p></div>
+    <div class="card"><h3>Deployment</h3><p>Push a folder; Sixter builds, runs and serves it over HTTPS.</p></div>
+    <div class="card"><h3>Tunnel Mode</h3><p>Host apps from a box with no public IP.</p></div>
+    <div class="card"><h3>Coworkspaces</h3><p>Teams, roles and a push → review → deploy flow.</p></div>
+  </div>
+
+  <h2 id="install">Installation</h2>
+  <p><b>Linux:</b></p>
+  <pre><code>curl -fsSL https://sixter.in/sixter_amd64.deb -o sixter.deb
+sudo dpkg -i sixter.deb
+sixter help</code></pre>
+  <p><b>Windows / macOS:</b> download the CLI from your dashboard and add <code>sixter</code> to your PATH. The CLI ships with its companion binaries (tunnel client, repo tools) in the same folder.</p>
+
+  <h2 id="login">Logging in</h2>
+  <pre><code>sixter login</code></pre>
+  <p>The CLI prints a URL and a short code. Open the URL on <b>any device</b>, approve, and credentials are saved to <code>~/.sixter/config.yaml</code>. On an SSH‑only server use <code>sixter login -no-browser</code>. Every account gets two permanent subdomains: <code>&lt;name&gt;.sixter.in</code> for tunnels and <code>&lt;name&gt;-repo.sixter.in</code> for the repo dashboard.</p>
+
+  <h2 id="tunnel">Expose localhost with a tunnel</h2>
+  <pre><code>sixter tunnel -port 3000</code></pre>
+  <p>Forwards <code>https://&lt;name&gt;.sixter.in</code> to <code>http://127.0.0.1:3000</code>. HTTP and WebSocket both work, with automatic HTTPS. See the step‑by‑step <a href="/tutorials/expose-localhost-to-the-internet/">tutorial: expose localhost to the internet</a>.</p>
+
+  <h2 id="custom-domains">Custom domains &amp; automatic HTTPS</h2>
+  <p>Point your own domain at Sixter and it terminates TLS for you — no certificate management. For a subdomain, add a <code>CNAME</code> to <code>sixter.in</code>; for an apex domain use an A record to the gateway (or your provider's CNAME flattening). Certificates are issued and renewed automatically via Let's Encrypt.</p>
+
+  <h2 id="deploy">Deploy a project</h2>
+  <pre><code>sixter repo --server &lt;name&gt;-repo --project myapp</code></pre>
+  <p>Uploads the current folder to your repo server, which auto‑detects the stack (Node, Python, Go, static, …), builds it, runs it as a service, health‑checks it, and rolls back automatically if it fails to start.</p>
+
+  <h2 id="tunnel-mode">Tunnel Mode — host without a public IP</h2>
+  <p>If your server sits behind NAT with no public IP, switch a project to <b>Tunnel Mode</b>. The Sixter gateway accepts traffic for your domain and forwards it down the server's outbound tunnel to your app — TLS is terminated at the gateway. No port‑forwarding, no public IP required.</p>
+
+  <h2 id="teams">Team coworkspaces</h2>
+  <p>Group related projects into a <b>workspace</b> and invite teammates with roles (lead, backend, frontend, deployment, viewer). Developers enroll and push with the CLI:</p>
+  <pre><code>sixter project init &lt;token&gt;   # link this folder to a workspace project
+sixter push                     # upload your work → pending review</code></pre>
+  <p>A push is <b>staged, not deployed</b>. A project lead or deployment member promotes it:</p>
+  <pre><code>sixter project deploy</code></pre>
+  <p>An activity feed records every deploy and change for audit.</p>
+
+  <h2 id="firewall">Firewall &amp; security</h2>
+  <p>Every request is inspected at the edge: a WAF blocks SQL injection, XSS, path traversal and scanner probes; optional bot protection blocks scrapers and automation tools; rate limiting and per‑IP banning stop abuse; and a global guard mitigates L7 floods. Sixter's own tooling is always allowlisted.</p>
+
+  <p style="margin-top:34px"><a class="cta" href="/">Get started</a><a class="cta ghost" href="/vs/ngrok/">Compare with ngrok</a></p>
+  </main>
+</div>
+
+<footer class="site"><div class="wrap">
+  <div class="row"><a href="/docs/">Documentation</a><a href="/vs/ngrok/">vs ngrok</a><a href="/vs/cloudflare-tunnel/">vs Cloudflare Tunnel</a><a href="/glossary/">Glossary</a><a href="/faq/">FAQ</a></div>
+  © Sixter — secure tunnels &amp; deployment. <a href="https://sixter.in/">sixter.in</a>
+</div></footer>
+</body>
+</html>

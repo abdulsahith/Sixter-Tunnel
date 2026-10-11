@@ -1,0 +1,32 @@
+#!/usr/sbin/nft -f
+# Sixter edge firewall — per-IP connection + new-connection rate limits on the
+# web ports. Stops small SYN/connection floods before they reach nginx.
+# Load with:  sudo nft -f /etc/sixter-nftables.nft   (persist via apply-hardening.sh)
+#
+# NOTE: policy is "accept" so this NEVER locks you out of SSH or anything else —
+# it only adds targeted drops for abusive web traffic.
+
+table inet sixter {
+    # IPs that tripped the new-connection flood guard (auto-expire)
+    set flood_ban {
+        type ipv4_addr
+        flags timeout
+    }
+
+    chain input {
+        type filter hook input priority -150; policy accept;
+
+        ct state established,related accept
+        iif "lo" accept
+
+        # already flagged → drop
+        ip saddr @flood_ban drop
+
+        # cap concurrent connections per IP to the web ports
+        tcp dport { 80, 443 } ct count over 150 ct state new drop
+
+        # new-connection rate limit per IP; offenders get a 10-min ban
+        tcp dport { 80, 443 } ct state new meter web_rate { ip saddr limit rate 60/second burst 120 packets } accept
+        tcp dport { 80, 443 } ct state new add @flood_ban { ip saddr timeout 10m } drop
+    }
+}

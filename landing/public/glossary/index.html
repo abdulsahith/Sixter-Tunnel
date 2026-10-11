@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Tunneling glossary — tunnel, reverse proxy, WAF, HTTPS, NAT &amp; more | Sixter</title>
+<meta name="description" content="Plain-English definitions of tunneling and networking terms: tunnel, reverse proxy, WAF, localhost, HTTPS/TLS, webhook, NAT, public IP, and self-hosting." />
+<link rel="canonical" href="https://sixter.in/glossary/" />
+<meta name="robots" content="index, follow, max-image-preview:large" />
+<link rel="icon" type="image/png" href="/sixter.png" />
+<link rel="stylesheet" href="/content.css" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Tunneling &amp; networking glossary" />
+<meta property="og:description" content="Plain-English definitions of tunnel, reverse proxy, WAF, HTTPS, NAT and more." />
+<meta property="og:url" content="https://sixter.in/glossary/" />
+<meta property="og:image" content="https://sixter.in/sixter-logo.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://sixter.in/"},{"@type":"ListItem","position":2,"name":"Glossary","item":"https://sixter.in/glossary/"}]}
+</script>
+</head>
+<body>
+<header class="site"><div class="wrap">
+  <a class="brand" href="/"><img src="/sixter.png" alt="Sixter logo" /> Sixter</a>
+  <nav><a href="/docs/">Docs</a><a href="/vs/ngrok/">vs ngrok</a><a href="/glossary/">Glossary</a><a href="/faq/">FAQ</a></nav>
+</div></header>
+
+<div class="wrap">
+  <div class="crumbs"><a href="/">Home</a> / Glossary</div>
+  <main>
+  <h1>Tunneling &amp; networking glossary</h1>
+  <p class="lead">Plain‑English definitions of the terms you'll meet when exposing a local server to the internet.</p>
+
+  <h2 id="tunnel">Tunnel</h2>
+  <p>A tunnel is a persistent, outbound connection from a machine (your laptop or a private server) to a public gateway. The gateway assigns a public URL and relays incoming requests back down the tunnel to a local port. Because the connection is outbound, no firewall port or public IP is needed. See <a href="/tutorials/expose-localhost-to-the-internet/">how to expose localhost</a>.</p>
+
+  <h2 id="reverse-proxy">Reverse proxy</h2>
+  <p>A reverse proxy sits in front of one or more backend servers and forwards client requests to them, often adding TLS termination, caching, load balancing or security filtering. Sixter's gateway acts as a reverse proxy for your tunnels and deployed apps.</p>
+
+  <h2 id="waf">WAF (Web Application Firewall)</h2>
+  <p>A WAF inspects incoming HTTP requests and blocks malicious ones — SQL injection, cross‑site scripting (XSS), path traversal, and scanner probes — before they reach your application. Sixter runs a WAF at the edge on every request.</p>
+
+  <h2 id="localhost">localhost</h2>
+  <p><code>localhost</code> (127.0.0.1) is the loopback address that refers to your own machine. A server on <code>localhost:3000</code> is only reachable from that machine until you expose it with a tunnel.</p>
+
+  <h2 id="https-tls">HTTPS / TLS</h2>
+  <p>TLS encrypts traffic between a browser and a server; HTTPS is HTTP over TLS. It requires a certificate for the domain. Sixter issues and renews certificates automatically, so tunnels and custom domains are served over HTTPS with no manual certificate work.</p>
+
+  <h2 id="webhook">Webhook</h2>
+  <p>A webhook is an HTTP callback a service (Stripe, GitHub, Slack) sends to your URL when an event happens. To test one locally you need a public HTTPS URL that forwards to your machine — a common use of tunnels.</p>
+
+  <h2 id="nat-public-ip">NAT &amp; public IP</h2>
+  <p>Most home and office networks use NAT, so devices share one public IP and aren't directly reachable from the internet. Without a public IP you can't accept inbound connections — but an outbound tunnel (or Sixter's <a href="/docs/#tunnel-mode">Tunnel Mode</a>) works around this.</p>
+
+  <h2 id="self-hosted">Self‑hosted</h2>
+  <p>Self‑hosting means running the software on infrastructure you control rather than a vendor's cloud. Sixter's gateway and repo server can be self‑hosted on your own VPS.</p>
+
+  <p style="margin-top:30px"><a class="cta" href="/">Get started</a><a class="cta ghost" href="/docs/">Read the docs</a></p>
+  </main>
+</div>
+
+<footer class="site"><div class="wrap">
+  <div class="row"><a href="/docs/">Documentation</a><a href="/vs/ngrok/">vs ngrok</a><a href="/vs/cloudflare-tunnel/">vs Cloudflare Tunnel</a><a href="/glossary/">Glossary</a><a href="/faq/">FAQ</a></div>
+  © Sixter — secure tunnels &amp; deployment. <a href="https://sixter.in/">sixter.in</a>
+</div></footer>
+</body>
+</html>

@@ -1,0 +1,4 @@
+# Sixter: let the non-root "sixter" user run ONLY the deploy helper as root,
+# with no password. Install to /etc/sudoers.d/sixter (mode 0440).
+# The helper validates inputs and performs only nginx/certbot/systemd steps.
+sixter ALL=(root) NOPASSWD: /usr/local/bin/sixter-helper

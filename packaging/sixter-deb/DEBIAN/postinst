@@ -1,0 +1,35 @@
+#!/bin/sh
+set -e
+
+# ensure binaries are executable
+chmod 0755 /usr/local/bin/sixter \
+           /usr/local/bin/sixter-client \
+           /usr/local/bin/sixter-server \
+           /usr/local/bin/sixter-repo \
+           /usr/local/bin/sixter-reposerver 2>/dev/null || true
+
+# apply VPS hardening (kernel sysctl + nftables + nginx) — never fail the install
+HARDEN=/usr/local/share/sixter/hardening/apply-hardening.sh
+if [ -f "$HARDEN" ]; then
+  echo "  Applying VPS hardening (kernel + nftables + nginx)..."
+  if ( cd "$(dirname "$HARDEN")" && sh ./apply-hardening.sh ) ; then
+    echo "  ✓ hardening applied"
+  else
+    echo "  (hardening skipped/partial — re-run later: sudo sh $HARDEN)"
+  fi
+fi
+
+echo ""
+echo "  Sixter 2.0 installed."
+echo ""
+echo "  1) Log in (device flow, approve from your phone):"
+echo "       sixter login"
+echo ""
+echo "  2) Set up the repo server (creates the 'sixter' service):"
+echo "       sudo sixter repo-server -setup"
+echo ""
+echo "  For custom domains + HTTPS:  sudo apt install nginx certbot python3-certbot-nginx"
+echo "  For SSH access to projects:  sudo ufw allow 2222"
+echo ""
+
+exit 0

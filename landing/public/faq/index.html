@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sixter FAQ — tunnels, custom domains, self-hosting, HTTPS &amp; teams</title>
+<meta name="description" content="Frequently asked questions about Sixter: how it differs from ngrok, whether it's self-hostable, if you need a public IP, custom domains, HTTPS, pricing model, and team deployment." />
+<link rel="canonical" href="https://sixter.in/faq/" />
+<meta name="robots" content="index, follow, max-image-preview:large" />
+<link rel="icon" type="image/png" href="/sixter.png" />
+<link rel="stylesheet" href="/content.css" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Sixter FAQ" />
+<meta property="og:description" content="Answers to common questions about Sixter tunnels, deployment, self-hosting and HTTPS." />
+<meta property="og:url" content="https://sixter.in/faq/" />
+<meta property="og:image" content="https://sixter.in/sixter-logo.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"What is Sixter?","acceptedAnswer":{"@type":"Answer","text":"Sixter is a secure tunneling and deployment platform. It exposes localhost or a private server to the internet with automatic HTTPS and custom domains, and it can also build, run and deploy your projects."}},
+{"@type":"Question","name":"How is Sixter different from ngrok?","acceptedAnswer":{"@type":"Answer","text":"ngrok is a hosted tunneling service. Sixter also tunnels localhost, but adds one-click project deployment, free custom domains with automatic HTTPS, a built-in WAF firewall, team coworkspaces, and it can be self-hosted on your own server."}},
+{"@type":"Question","name":"Is Sixter self-hostable?","acceptedAnswer":{"@type":"Answer","text":"Yes. The Sixter gateway and repo server run on your own VPS, so you control the infrastructure and avoid per-seat SaaS costs."}},
+{"@type":"Question","name":"Do I need a public IP to use Sixter?","acceptedAnswer":{"@type":"Answer","text":"No. In Tunnel Mode your server opens an outbound connection to the Sixter gateway, which forwards traffic back down that tunnel. No public IP or port forwarding is required."}},
+{"@type":"Question","name":"Can I use my own domain?","acceptedAnswer":{"@type":"Answer","text":"Yes. Point a CNAME (or an A record for an apex domain) at Sixter and it issues and renews TLS certificates automatically via Let's Encrypt."}},
+{"@type":"Question","name":"Does Sixter provide HTTPS automatically?","acceptedAnswer":{"@type":"Answer","text":"Yes. Sixter terminates TLS at the gateway and manages certificate issuance and renewal, so tunnels and custom domains are served over HTTPS with no manual certificate work."}},
+{"@type":"Question","name":"Can a team deploy together?","acceptedAnswer":{"@type":"Answer","text":"Yes. Sixter coworkspaces let you invite members with roles. Developers push code with the CLI, which stages a pending version, and a project lead or deployment member promotes it to production."}}
+]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://sixter.in/"},{"@type":"ListItem","position":2,"name":"FAQ","item":"https://sixter.in/faq/"}]}
+</script>
+</head>
+<body>
+<header class="site"><div class="wrap">
+  <a class="brand" href="/"><img src="/sixter.png" alt="Sixter logo" /> Sixter</a>
+  <nav><a href="/docs/">Docs</a><a href="/vs/ngrok/">vs ngrok</a><a href="/glossary/">Glossary</a><a href="/faq/">FAQ</a></nav>
+</div></header>
+
+<div class="wrap">
+  <div class="crumbs"><a href="/">Home</a> / FAQ</div>
+  <main>
+  <h1>Frequently asked questions</h1>
+  <p class="lead">Common questions about Sixter — tunnels, deployment, self‑hosting and HTTPS.</p>
+
+  <details open><summary>What is Sixter?</summary><p>Sixter is a secure tunneling and deployment platform. It exposes <code>localhost</code> or a private server to the internet with automatic HTTPS and custom domains, and it can also build, run and deploy your projects.</p></details>
+  <details><summary>How is Sixter different from ngrok?</summary><p>ngrok is a hosted tunneling service. Sixter also tunnels localhost, but adds one‑click project deployment, free custom domains with automatic HTTPS, a built‑in WAF firewall, team coworkspaces, and it can be self‑hosted. See the full <a href="/vs/ngrok/">Sixter vs ngrok</a> comparison.</p></details>
+  <details><summary>Is Sixter self‑hostable?</summary><p>Yes. The gateway and repo server run on your own VPS, so you control the infrastructure.</p></details>
+  <details><summary>Do I need a public IP?</summary><p>No. In <a href="/docs/#tunnel-mode">Tunnel Mode</a> your server opens an outbound connection to the gateway, which forwards traffic back down the tunnel. No public IP or port‑forwarding needed.</p></details>
+  <details><summary>Can I use my own domain?</summary><p>Yes. Point a CNAME (or A record for apex) at Sixter and TLS certificates are issued and renewed automatically.</p></details>
+  <details><summary>Does Sixter provide HTTPS automatically?</summary><p>Yes. TLS is terminated at the gateway with automatic certificate management, so tunnels and custom domains are served over HTTPS.</p></details>
+  <details><summary>Can a team deploy together?</summary><p>Yes. Developers <code>sixter push</code> to stage a pending version; a lead or deployment member runs <code>sixter project deploy</code> to promote it. See <a href="/docs/#teams">Team coworkspaces</a>.</p></details>
+
+  <p style="margin-top:30px"><a class="cta" href="/">Get started</a><a class="cta ghost" href="/docs/">Read the docs</a></p>
+  </main>
+</div>
+
+<footer class="site"><div class="wrap">
+  <div class="row"><a href="/docs/">Documentation</a><a href="/vs/ngrok/">vs ngrok</a><a href="/vs/cloudflare-tunnel/">vs Cloudflare Tunnel</a><a href="/glossary/">Glossary</a><a href="/faq/">FAQ</a></div>
+  © Sixter — secure tunnels &amp; deployment. <a href="https://sixter.in/">sixter.in</a>
+</div></footer>
+</body>
+</html>

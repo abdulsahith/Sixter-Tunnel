@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sixter vs Cloudflare Tunnel — tunneling + deployment compared (2025)</title>
+<meta name="description" content="An honest comparison of Sixter and Cloudflare Tunnel (cloudflared) for exposing local and private services. Setup, custom domains, deployment, self-hosting, and when to choose each." />
+<link rel="canonical" href="https://sixter.in/vs/cloudflare-tunnel/" />
+<meta name="robots" content="index, follow, max-image-preview:large" />
+<link rel="icon" type="image/png" href="/sixter.png" />
+<link rel="stylesheet" href="/content.css" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Sixter vs Cloudflare Tunnel" />
+<meta property="og:description" content="Honest comparison: setup, custom domains, deployment, self-hosting and when to choose each." />
+<meta property="og:url" content="https://sixter.in/vs/cloudflare-tunnel/" />
+<meta property="og:image" content="https://sixter.in/sixter-logo.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"TechArticle","headline":"Sixter vs Cloudflare Tunnel","description":"An honest comparison of Sixter and Cloudflare Tunnel for exposing local and private services.","url":"https://sixter.in/vs/cloudflare-tunnel/","publisher":{"@type":"Organization","name":"Sixter","logo":{"@type":"ImageObject","url":"https://sixter.in/sixter-logo.png"}}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://sixter.in/"},{"@type":"ListItem","position":2,"name":"Compare","item":"https://sixter.in/vs/cloudflare-tunnel/"},{"@type":"ListItem","position":3,"name":"Sixter vs Cloudflare Tunnel","item":"https://sixter.in/vs/cloudflare-tunnel/"}]}
+</script>
+</head>
+<body>
+<header class="site"><div class="wrap">
+  <a class="brand" href="/"><img src="/sixter.png" alt="Sixter logo" /> Sixter</a>
+  <nav><a href="/docs/">Docs</a><a href="/vs/ngrok/">vs ngrok</a><a href="/glossary/">Glossary</a><a href="/faq/">FAQ</a></nav>
+</div></header>
+
+<div class="wrap">
+  <div class="crumbs"><a href="/">Home</a> / Compare / Sixter vs Cloudflare Tunnel</div>
+  <main>
+  <h1>Sixter vs Cloudflare Tunnel</h1>
+  <p class="lead">Both let you expose a local or private service to the internet without opening firewall ports. Cloudflare Tunnel (<code>cloudflared</code>) routes traffic through Cloudflare's network; Sixter is a standalone tunnel + deployment platform you can self‑host.</p>
+
+  <div class="note">This comparison aims to be factual and fair. Cloudflare Tunnel is a robust, free product tightly integrated with Cloudflare's network and Zero Trust suite.</div>
+
+  <h2>At a glance</h2>
+  <table>
+    <thead><tr><th>Capability</th><th>Sixter</th><th>Cloudflare Tunnel</th></tr></thead>
+    <tbody>
+      <tr><td>Expose local/private services</td><td class="y">Yes</td><td class="y">Yes</td></tr>
+      <tr><td>Automatic HTTPS</td><td class="y">Yes</td><td class="y">Yes</td></tr>
+      <tr><td>Requires a specific DNS provider</td><td>No (any DNS)</td><td>Domain on Cloudflare</td></tr>
+      <tr><td>Project deployment (build &amp; run)</td><td class="y">Yes</td><td>No</td></tr>
+      <tr><td>Global edge network / DDoS scale</td><td>Single gateway you run</td><td class="y">Cloudflare's global network</td></tr>
+      <tr><td>Built‑in WAF at your gateway</td><td class="y">Yes</td><td class="y">Yes (Cloudflare WAF)</td></tr>
+      <tr><td>Self‑hosted control plane</td><td class="y">Yes</td><td>No (Cloudflare‑managed)</td></tr>
+      <tr><td>Team review‑then‑deploy workflow</td><td class="y">Yes</td><td>No</td></tr>
+    </tbody>
+  </table>
+
+  <h2>When Cloudflare Tunnel is the better fit</h2>
+  <p>If your domain is already on Cloudflare, you want its global anycast network and DDoS scale, and you're using Cloudflare Zero Trust for access control, Cloudflare Tunnel integrates seamlessly and is free.</p>
+
+  <h2>When Sixter is the better fit</h2>
+  <p>Choose Sixter if you want tunneling <b>and</b> deployment in one tool, you don't want to move DNS to a specific provider, you want to self‑host the gateway, or you need a developer push → lead‑deploy team workflow.</p>
+
+  <h2>Try Sixter</h2>
+  <pre><code>sixter login
+sixter tunnel -port 8080</code></pre>
+  <p>Read the <a href="/docs/">docs</a>, the <a href="/glossary/">glossary</a>, or compare with <a href="/vs/ngrok/">ngrok</a>.</p>
+
+  <p style="margin-top:30px"><a class="cta" href="/">Get started</a><a class="cta ghost" href="/docs/">Documentation</a></p>
+  </main>
+</div>
+
+<footer class="site"><div class="wrap">
+  <div class="row"><a href="/docs/">Documentation</a><a href="/vs/ngrok/">vs ngrok</a><a href="/vs/cloudflare-tunnel/">vs Cloudflare Tunnel</a><a href="/glossary/">Glossary</a><a href="/faq/">FAQ</a></div>
+  © Sixter — secure tunnels &amp; deployment. <a href="https://sixter.in/">sixter.in</a>
+</div></footer>
+</body>
+</html>
