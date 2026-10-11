@@ -190,7 +190,14 @@ Before accepting external contributions, add a `CONTRIBUTING.md`, code-of-conduc
 
 ## License
 
-**License not yet specified in this README.** Add a `LICENSE` file before inviting reuse or redistribution. Publishing source code on GitHub does not automatically grant an open-source license.
+Sixter Tunnel is licensed under the **Apache License, Version 2.0**.
+
+See the [LICENSE](LICENSE) file in this repository
+for the full license text.
+
+You may use, modify, and distribute the software
+under the terms of Apache 2.0, including its
+attribution, notice, and patent provisions.
 
 ---
 
