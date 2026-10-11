@@ -1,0 +1,65 @@
+# Explicitly excluded by repository owner
+/go.mod
+/go.sum
+/build.ps1
+
+# Go build outputs
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+*.prof
+*.coverprofile
+coverage/
+coverage.html
+/bin/
+/build/
+/dist/
+/tmp/
+/temp/
+
+# Local configuration and secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*.crt
+*.token
+secrets/
+credentials/
+
+# Local databases and runtime state
+*.db
+*.sqlite
+*.sqlite3
+*.log
+logs/
+*.pid
+*.sock
+.cache/
+
+# Editor and OS files
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Archives and packages
+*.zip
+*.tar
+*.tar.gz
+*.deb
+*.rpm
+
+# Local deployment files (adjust for your repository)
+*.local.yaml
+*.local.yml
